@@ -12,7 +12,14 @@ from .search import proposal_logpdf
 def wilson_ci(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
     """TODO 4. Wilson score interval for k successes in n trials. Must behave at k = 0 (lower bound 0,
     upper bound > 0) where the plain normal interval collapses to [0, 0]. Return (0, 1) for n = 0."""
-    raise NotImplementedError("TODO 4: wilson_ci")
+    if n == 0:
+        return (0.0, 1.0)
+    p, z2 = k / n, z * z
+    den = 1 + z2 / n
+    c = (p + z2 / (2 * n)) / den
+    h = z * math.sqrt(p * (1 - p) / n + z2 / (4 * n * n)) / den
+    # at k = 0 (k = n) c - h (c + h) is 0 (1) up to rounding: pin it so the bound is exact
+    return (0.0 if k == 0 else max(0.0, c - h), 1.0 if k == n else min(1.0, c + h))
 
 
 def log_weights(Z, Bn, nat: space.Natural, prop: dict, beta: float = 0.2) -> np.ndarray:
@@ -21,7 +28,9 @@ def log_weights(Z, Bn, nat: space.Natural, prop: dict, beta: float = 0.2) -> np.
 
     nat.logpdf(Z, Bn) gives log p; proposal_logpdf(prop, Z, Bn) gives log of the CEM proposal.
     Use np.logaddexp so a weight of 1e-30 does not underflow to 0."""
-    raise NotImplementedError("TODO 6: log_weights")
+    lp = nat.logpdf(Z, Bn)
+    lq = np.logaddexp(np.log1p(-beta) + proposal_logpdf(prop, Z, Bn), np.log(beta) + lp)
+    return lp - lq
 
 
 def is_estimate(logw: np.ndarray, y: np.ndarray, z: float = 1.96) -> dict:
@@ -31,7 +40,13 @@ def is_estimate(logw: np.ndarray, y: np.ndarray, z: float = 1.96) -> dict:
     se = std(w * y, ddof=1) / sqrt(n); CI = [max(0, p - z se), p + z se];
     Kish effective sample size ess = (sum w)^2 / sum(w^2).
     Return dict(p=, lo=, hi=, se=, ess=, n=)."""
-    raise NotImplementedError("TODO 7: is_estimate")
+    w = np.exp(np.asarray(logw, dtype=float))
+    wy = w * np.asarray(y, dtype=float)
+    n = len(w)
+    p = float(wy.mean())
+    se = float(wy.std(ddof=1) / math.sqrt(n))
+    ess = float(w.sum() ** 2 / np.sum(w ** 2))
+    return dict(p=p, lo=max(0.0, p - z * se), hi=p + z * se, se=se, ess=ess, n=n)
 
 
 def rule_of_three(n_eff: float) -> float:

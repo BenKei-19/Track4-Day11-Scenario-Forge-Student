@@ -1,0 +1,47 @@
+{
+ "format": "avsim-studio/1",
+ "params": {
+  "cutT0": 6.5,
+  "cutDur": 2.4,
+  "cutV": 15,
+  "pedT0": 11,
+  "pedV": 1.45,
+  "busGo": 17,
+  "cutDs": -4,
+  "tgT": 0.9,
+  "mu": 0.8,
+  "cutGap": 12,
+  "cutBrake": 0,
+  "pedGap": 4.5,
+  "pedLook": 1,
+  "civil": true
+ },
+ "policy": {},
+ "hazards": [
+  {
+   "x": 140,
+   "side": "S",
+   "v": 1.4,
+   "t0": 0,
+   "trig": 40,
+   "type": "ped"
+  }
+ ],
+ "ego": "planner",
+ "space": {
+  "h0_x": [
+   130,
+   190
+  ],
+  "h0_v": [
+   1.0,
+   2.0
+  ],
+  "h0_trig": [
+   20,
+   70
+  ]
+ },
+ "exposure": 0.04,
+ "why": "Người đi bộ băng ngang giữa dãy phố, không có vạch, bước xuống từ lề phải (phía xe ta) rồi đi qua làn ngoài vào làn xe ta. h0_x [130, 190] m: đoạn giữa dãy phố ngay sau vạch qua đường (x = 122), chỗ người ta đi tắt thay vì quay về vạch; chặn ở 190 m vì xe ta chỉ tới khoảng x ≈ 200 m sau 24 s (trung vị, đo trên 300 lần chạy tự nhiên của thị trấn A). h0_v [1.0, 2.0] m/s: Knoblauch, Pietrucha & Nitzburg (1996, Transportation Research Record 1538) đo tốc độ đi bộ trung bình khoảng 1,51 m/s (dưới 65 tuổi) và 1,25 m/s (trên 65 tuổi), phân vị 15 % là 1,25 và 0,97 m/s; cận trên 2,0 m/s cho người vội, chạy chậm khi băng ngang. h0_trig [20, 70] m: người băng ngang bước xuống khi xe ta còn cách 20–70 m, tức khe thời gian khoảng 2–6 s ở tốc độ 10–12 m/s của xe ta sau vạch; ngắn hơn khe của người qua vạch trong chính thị trấn này (pedGap trung vị 4,5 s, avsim/space.py) vì người băng ngang chấp nhận khe nhỏ hơn. exposure 0,04 lần/chuyến: giả định khoảng 30 lượt băng ngang mỗi giờ trên đoạn phố 60 m này (phố buôn bán nội đô), và một lượt chỉ thành rắc rối khi nó bắt đầu trong cửa sổ khoảng 5 s lúc xe ta cách 20–70 m: 30 × 5 / 3600 ≈ 0,04. Đây là giả định, cần đếm bằng camera trên một dãy phố thật để thay."
+}

@@ -1,0 +1,73 @@
+[
+ {
+  "name": "q5_bus_bypass",
+  "button": "B-01 · lách qua xe buýt",
+  "event": {
+   "t": 12.700000000000001,
+   "f": 254,
+   "a": "ego",
+   "b": "C2",
+   "kind": "contact",
+   "x": 93.35039794619718,
+   "z": 2.525591076874168,
+   "fake": false
+  },
+  "t": 12.850000000000001,
+  "readout": "kiểu\nlách qua xe buýt\nchính sách của bạn\nva chạm xe cắt làn 12,7 s\nchính sách gốc\nkhông va chạm\nmặt đường\nướt (μ 0,5)\nkhe chấp nhận khi cắt làn\n9,8 m\nngười đi bộ ngó qua xe buýt\ncó"
+ },
+ {
+  "name": "q5_crosswalk_block",
+  "button": "C-01 · chặn lối người đi bộ",
+  "event": {
+   "t": 19.700000000000003,
+   "f": 394,
+   "a": "ego",
+   "b": "P1",
+   "kind": "block",
+   "x": 120.86644014125875,
+   "z": 2.621000639044122,
+   "fake": false
+  },
+  "t": 19.85,
+  "readout": "kiểu\nchặn lối người đi bộ\nchính sách của bạn\nchặn lối người đi bộ 19,7 s\nchính sách gốc\nchặn lối 19,7 s\nmặt đường\nướt (μ 0,5)\nkhe chấp nhận khi cắt làn\n25,1 m\nngười đi bộ ngó qua xe buýt\nkhông"
+ },
+ {
+  "name": "q1_replay",
+  "button": "R-01 · chỉ va chạm khi phát lại log",
+  "event": {
+   "t": 18.75,
+   "f": 375,
+   "a": "ego",
+   "b": "TG",
+   "kind": "contact",
+   "x": 115.28174560134971,
+   "z": 1.75,
+   "fake": true
+  },
+  "t": 18.9,
+  "readout": "kiểu\nchỉ va chạm khi phát lại log\nchính sách của bạn\nva chạm xe bám đuôi 18,8 s\nchính sách gốc\nva chạm 18,8 s\nmặt đường\nkhô\nkhe chấp nhận khi cắt làn\n10,4 m\nngười đi bộ ngó qua xe buýt\ncó"
+ },
+ {
+  "name": "q9_mine",
+  "button": "GB-01 · rắc rối của bạn",
+  "event": {
+   "t": 21.6,
+   "f": 432,
+   "a": "ego",
+   "b": "H0",
+   "kind": "contact",
+   "x": 158.23664041524432,
+   "z": 2.1677262884750954,
+   "fake": false
+  },
+  "t": 21.75,
+  "readout": "kiểu\nrắc rối của bạn\nchính sách của bạn\nva chạm người băng ngang 21,6 s\nchính sách gốc\nva chạm 21,6 s\nmặt đường\nkhô\nkhe chấp nhận khi cắt làn\n5,0 m\nngười đi bộ ngó qua xe buýt\ncó\nrắc rối thêm vào\nH0 người băng ngang"
+ },
+ {
+  "name": "q6_bus_bypass_fix_vs_ghost",
+  "button": "FIX-bus · lách qua xe buýt",
+  "event": null,
+  "t": 12.6,
+  "readout": "kiểu\nlách qua xe buýt\nchính sách của bạn\nkhông va chạm\nchính sách gốc\nva chạm 12,5 s\nmặt đường\nkhô\nkhe chấp nhận khi cắt làn\n6,3 m\nngười đi bộ ngó qua xe buýt\ncó"
+ }
+]
